@@ -91,10 +91,10 @@ vector<int> build_lcp(string s, vector<int> &p, vector<int> &c) {		// builds lcp
 }
 
 void precalc() {								// needs to precalculate logs
-	fl[0] = 0;		
-	fl[1] = 0;									// of all numbers in range [1, n]
-	for (int i = 2; i < MAXN; i++) {					
-		fl[i] = fl[i / 2] + 1;					// complexity is O(n)
+	fl[0] = 0;									// of all numbers in range [1, n]
+	fl[1] = 0;									
+	for (int i = 2; i < MAXN; i++) {			// complexity is O(n)				
+		fl[i] = fl[i / 2] + 1;			
 	}
 }
 
@@ -203,7 +203,7 @@ void substring_sorting(string s, vector<pair<int, int> > &subs) {					// subs co
 	});
 }
 
-// ----------------------------------------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------------------------------------------- //
 
 int main() {
 	return 0;
