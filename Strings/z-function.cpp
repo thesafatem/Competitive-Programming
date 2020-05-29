@@ -81,6 +81,19 @@ string restore(vector<int> z) {
 	return s;
 }
 
+bool is_substring(string s, string t) {
+	s = t + '$' + s;
+	int sz = int(t.size());
+	int n = int(s.size());
+	vector<int> z = Zfunc(s);
+	for (int i = sz + 1; i < n; i++) {
+		if (z[i] == sz) {
+			return true;
+		}
+	}
+	return false;
+}
+
 string period(string s) {	
 	vector<int> z = Zfunc(s);			
 	int n = int(s.size());
