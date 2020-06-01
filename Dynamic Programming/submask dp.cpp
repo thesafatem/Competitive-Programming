@@ -9,9 +9,10 @@ void solve() {
 		cube *= 3;
 	}
 	for (int mask = 0; mask < (1 << n); mask++) {
-		for (int submask = mask; submask > 0; submask = (submask - 1) & mask) {
+		for (int submask = mask; ; submask = (submask - 1) & mask) {
 			// operations with mask and submask
 			cnt++;
+			if (submask == 0) break;
 		}
 	}
 	cout << cnt << " " << cube << endl;
