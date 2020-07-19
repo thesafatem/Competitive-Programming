@@ -1,38 +1,46 @@
 #include <bits/stdc++.h>
 #define pb push_back
-#define all(x) (x).begin(), (x).end()
-#define sz(x) (int)((x).size())
 using namespace std;
-
+ 
 vector<int> g[100010];
-int c[100010];
-int next[100010];
+char c[100010];
 int sz[100010];
 bool used[100010];
-
+ 
+bool cmp(int i, int j) {
+    return sz[i] > sz[j];
+}
+ 
 void calc(int v, int p) {
     sz[v] = 1;
-    next[v] = -1;
     for (int i = 0; i < int(g[v].size()); i++) {
         int to = g[v][i];
-        if (to == p or used[to]) continue;
-        calc(to, v);
-        sz[v] += sz[to];
-        if (next[v] == -1 or sz[to] > sz[next[v]]) {
-            next[v] = to;
+        if (to == p) continue;
+        if (used[to]) continue;
+        else {
+            calc(to, v);
+            sz[v] += sz[to];
         }
     }
+    sort(g[v].begin(), g[v].end(), cmp);
 }
-
-int dfs(int v, int siz) {
-    if (next[v] == -1 or 2 * sz[next[v]] <= siz) return v;
-    else return dfs(next[v], siz);
+ 
+int dfs(int v, int p, int siz) {
+    int to = -1;
+    for (int i = 0; i < int(g[v].size()); i++) {
+        if (g[v][i] != p and !used[g[v][i]]) {
+            to = g[v][i];
+            break;
+        }
+    }
+    if (to == -1 or 2 * sz[to] <= siz) return v;
+    else return dfs(to, v, siz);
 }
-
+ 
 void centroid(int v, int p, int level) {
     calc(v, p);
-    int center = dfs(v, sz[v]);
-    c[center] = level;
+    int center = dfs(v, p, sz[v]);
+    c[center] = char('A' + level);
     used[center] = true;
     for (int i = 0; i < int(g[center].size()); i++) {
         int to = g[center][i];
@@ -41,7 +49,7 @@ void centroid(int v, int p, int level) {
         }
     }
 }
-
+ 
 void solve() {
     int n; cin >> n;
     for (int i = 0; i < n - 1; i++) {
@@ -56,7 +64,7 @@ void solve() {
     }
     cout << endl;
 }
-
+ 
 int main() {
     solve();
 }
