@@ -18,7 +18,7 @@ vector<int> Zfunc(string s) {
  		while (z[i] + i <= n and s[z[i] + i] == s[z[i]]) {	
 			z[i]++;											// naive increment of Z, while coincide
 		}
-		if (i + z[i] - 1 > r) {								// if we can move right bound farther
+		if (i + z[i] - 1 > r) {									// if we can move right bound farther
 			l = i;											// we do it
 			r = i + z[i] - 1;
 		}
