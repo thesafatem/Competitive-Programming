@@ -1,0 +1,12 @@
+All sums of two elements
+https://codeforces.com/problemset/problem/1398/G
+https://codeforces.com/problemset/problem/827/E
+https://codeforces.com/problemset/problem/632/E
+
+Scalar product
+https://codeforces.com/contest/954/problem/I
+https://codeforces.com/problemset/problem/528/D
+
+FFT with modulo
+https://codeforces.com/problemset/problem/1251/F
+https://codeforces.com/problemset/problem/632/E
